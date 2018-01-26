@@ -9,7 +9,7 @@ import java.io.IOException;
 import java.util.Scanner;
 import java.util.InputMismatchException;
 import java.util.Set;
-import java.util.TreeSet;
+import java.util.HashSet;
 import java.util.List;
 import java.util.GregorianCalendar;
 import java.util.HashMap;
@@ -20,7 +20,7 @@ public class Login{
     public void executa(Utilizadores utilizadores, HashMap<String,Veiculo> veiculos) {
         String email,password;
         Scanner scin = new Scanner(System.in);
-        motoristas = new TreeSet<>();
+        motoristas = new HashSet<>();
         for(Ator u:utilizadores.getUtilizadores().values()){
             if(u instanceof Motorista)
                 motoristas.add((Motorista) u);            

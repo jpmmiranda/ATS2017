@@ -6,7 +6,7 @@
  * @version (número de versão ou data)
  */
 import java.util.Set;
-import java.util.TreeSet;
+import java.util.HashSet;
 import java.io.Serializable;
 import java.util.GregorianCalendar;
 public class Motorista extends Ator implements Serializable
@@ -79,7 +79,7 @@ public class Motorista extends Ator implements Serializable
      * @param taxi
      */
     public Motorista(String email, String nome, String pw, String morada, String dDN, Veiculo taxi){
-        super(email,nome,pw,morada,dDN,new TreeSet<Viagem>());
+        super(email,nome,pw,morada,dDN,new HashSet<Viagem>());
         this.grau = this.classificacao = 100;
         this.kmsTotais = 0;
         this.disponivel = false;

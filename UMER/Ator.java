@@ -6,7 +6,7 @@
  * @version (número de versão ou data)
  */
 import java.util.Set;
-import java.util.TreeSet;
+import java.util.HashSet;
 import java.util.List;
 import java.io.Serializable;
 import java.util.Iterator;
@@ -27,7 +27,7 @@ public abstract class Ator implements Comparable<Ator>, Serializable
      */
     public Ator(){
         this.email = this.nome = this.pw = this.morada = this.dataDeNascimento = "";
-        this.historico = new TreeSet<>();
+        this.historico = new HashSet<>();
     }
     
     /**
@@ -58,7 +58,7 @@ public abstract class Ator implements Comparable<Ator>, Serializable
         this.pw = pw;
         this.morada = morada;
         this.dataDeNascimento = dDN;
-        this.historico = new TreeSet<>();
+        this.historico = new HashSet<>();
         
         for(Viagem v : hist)
             this.historico.add(v.clone());
@@ -109,7 +109,7 @@ public abstract class Ator implements Comparable<Ator>, Serializable
      * @return Set<Viagem>
      */
     public Set<Viagem> getHistorico(){
-        Set<Viagem> res = new TreeSet<>();
+        Set<Viagem> res = new HashSet<>();
         
         this.historico.forEach(v -> res.add(v.clone()));
         

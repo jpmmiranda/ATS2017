@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import java.util.stream.Collectors;
 import java.util.Optional;
 import java.util.Set;
-import java.util.TreeSet;
+import java.util.HashSet;
 import java.io.Serializable;
 public class Utilizadores implements Serializable
 {
