@@ -1,5 +1,7 @@
 
 import java.io.ByteArrayInputStream;
+import java.io.OutputStream;
+import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -20,6 +22,13 @@ public class EnergyTests {
         EnergyCheckUtils utils = new EnergyCheckUtils();
         double[] before = utils.getEnergyStats();
 
+        PrintStream original = System.out;
+        System.setOut(new PrintStream(new OutputStream() {
+            public void write(int b) {
+                //DO NOTHING
+            }
+        }));
+        
         try {
             testar();
         } catch (Exception e) {
@@ -27,17 +36,19 @@ public class EnergyTests {
 
         double[] after = utils.getEnergyStats();
 
+        System.setOut(original);
+        
         System.out.println(
-            "Power consumption of dram: " + (after[0] - before[0]) / 10.0
-            + " power consumption of cpu: " + (after[1] - before[1]) / 10.0
-            + " power consumption of package: " + (after[2] - before[2]) / 10.0
+            "Power consumption of dram:\t" + (after[0] - before[0]) / 10.0
+            + "\nPower consumption of cpu:\t" + (after[1] - before[1]) / 10.0
+            + "\nPower consumption of package:\t" + (after[2] - before[2]) / 10.0
         );
 
         utils.ProfileDealloc();
     }
 
     private static void testar() {
-        for (int i = 0; i < 1000; i++) {
+        for (int i = 0; i < 100000; i++) {
             topGastadores("testGastadoresUser" + i);
             realizarViagem("testViagemUser" + i);
         }
